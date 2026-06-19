@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SYSTEM_BOOT: ADITYA_TAK 🎂</title>
+<!-- PWA & Mobile Optimization Meta Tags -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#050505">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+<!-- Confetti -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+<style>
+  :root {
+    --neon-blue: #00f3ff;
+    --neon-pink: #ff00ff;
+    --neon-red: #ff003c;
+    --dark-bg: #050505;
+  }
+
+  /* Reset & Box Sizing to prevent overflow */
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Share Tech Mono', monospace;
+    background-color: var(--dark-bg);
+    /* Cyberpunk Grid */
+    background-image: 
+      linear-gradient(rgba(0, 243, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 243, 255, 0.05) 1px, transparent 1px);
+    background-size: 25px 25px;
+    color: var(--neon-blue);
+    text-align: center;
+    width: 100vw;
+    min-height: 100vh;
+    overflow-x: hidden; /* Blocks horizontal scroll */
+  }
+
+  .page {
+    display: none;
+    min-height: 100vh;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+  }
+
+  .active { 
+    display: flex; 
+    opacity: 1;
+  }
+
+  /* Dynamic Typography */
+  h1 { 
+    font-size: clamp(1.2rem, 5vw, 2.2rem); 
+    text-shadow: 0 0 10px var(--neon-blue);
+    letter-spacing: 1px;
+    width: 100%;
+    word-wrap: break-word; /* Fixes text cut-off */
+    white-space: pre-wrap;
+    margin-bottom: 15px;
+  }
+
+  h2 {
+    font-size: clamp(1.5rem, 6vw, 2.5rem);
+    color: #fff;
+    text-shadow: 0 0 15px var(--neon-pink);
+    margin-bottom: 20px;
+  }
+
+  /* Responsive Sci-Fi Buttons */
+  button {
+    padding: 12px 25px;
+    border: 1px solid var(--neon-blue);
+    background: rgba(0, 243, 255, 0.05);
+    color: var(--neon-blue);
+    border-radius: 5px;
+    margin: 10px;
+    cursor: pointer;
+    font-size: clamp(0.9rem, 4vw, 1.1rem);
+    font-family: 'Share Tech Mono', monospace;
+    text-transform: uppercase;
+    box-shadow: 0 0 10px rgba(0, 243, 255, 0.2) inset, 0 0 10px rgba(0, 243, 255, 0.2);
+    transition: all 0.3s ease;
+    width: 90%;
+    max-width: 300px; /* Limits button width on small screens */
+  }
+
+  button:hover, button:active {
+    background: var(--neon-blue);
+    color: var(--dark-bg);
+    box-shadow: 0 0 20px var(--neon-blue) inset, 0 0 30px var(--neon-blue);
+  }
+
+  /* Pink variant for specific vibes */
+  .btn-pink {
+    border-color: var(--neon-pink);
+    color: var(--neon-pink);
+    background: rgba(255, 0, 255, 0.05);
+    box-shadow: 0 0 10px rgba(255, 0, 255, 0.2) inset, 0 0 10px rgba(255, 0, 255, 0.2);
+  }
+
+  .btn-pink:hover, .btn-pink:active {
+    background: var(--neon-pink);
+    color: var(--dark-bg);
+    box-shadow: 0 0 20px var(--neon-pink) inset, 0 0 30px var(--neon-pink);
+  }
+
+  /* Photos Optimization for Mobile */
+  .photo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    max-height: 60vh;
+    overflow-y: auto; /* Allows vertical scroll if photos are too many */
+    padding: 10px 0;
+  }
+
+  img {
+    width: 85%;
+    max-width: 300px;
+    border: 2px solid var(--neon-pink);
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(255, 0, 255, 0.4);
+    opacity: 0;
+    transform: scale(0.95);
+    animation: smoothLoad 1s forwards ease-out;
+  }
+
+  img:nth-child(1) { animation-delay: 0.2s; }
+  img:nth-child(2) { animation-delay: 0.5s; }
+  img:nth-child(3) { animation-delay: 0.8s; }
+
+  @keyframes smoothLoad {
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  .cursor {
+    display: inline-block;
+    width: 8px;
+    height: 1.2em;
+    background-color: var(--neon-blue);
+    vertical-align: bottom;
+    animation: blink 1s step-end infinite;
+  }
+
+  @keyframes blink { 50% { opacity: 0; } }
+</style>
+</head>
+
+<body>
+
+<!-- MUSIC EMBEDDED -->
+<audio id="music" preload="auto" loop>
+  <source src="https://files.catbox.moe/5h6air.mp3" type="audio/mpeg">
+</audio>
+
+<!-- PAGE 0: BOOT SEQUENCE -->
+<div class="page active" id="page0">
+  <h1>[SYSTEM_STANDBY]</h1>
+  <button onclick="initializeSystem()">> INITIALIZE_SYSTEM <</button>
+</div>
+
+<!-- PAGE 1: TYPING -->
+<div class="page" id="page1">
+  <h1 id="typingContainer"><span id="typing"></span><span class="cursor"></span></h1>
+  <button id="btnContinue" style="display:none;" onclick="nextPage(2)">> EXECUTE_NEXT <</button>
+</div>
+
+<!-- PAGE 2: WISH -->
+<div class="page" id="page2">
+  <h1 style="color: var(--neon-pink); text-shadow: 0 0 10px var(--neon-pink);">> DECRYPTING_MESSAGE... 100%</h1>
+  <h2>HAPPY BELATED BIRTHDAY</h2>
+  <h1>ADITYA TAK 🎂</h1>
+  <button class="btn-pink" onclick="startParty()">> INITIATE_CELEBRATION <</button>
+</div>
+
+<!-- PAGE 3: PHOTOS -->
+<div class="page" id="page3">
+  <h1>> LOADING_MEMORY_BANKS...</h1>
+  <div class="photo-container">
+    <!-- PHOTOS EMBEDDED -->
+    <img src="https://files.catbox.moe/z1gmdr.jpg" alt="Memory 1">
+    <img src="https://files.catbox.moe/qz4nbl.jpg" alt="Memory 2">
+    <img src="https://files.catbox.moe/5gmeip.jpg" alt="Memory 3">
+  </div>
+  <button onclick="nextPage(4)" style="margin-top: 20px;">> ACCESS_NEXT_PROTOCOL <</button>
+</div>
+
+<!-- PAGE 4: LOGIC/EMOTION GATE -->
+<div class="page" id="page4">
+  <h1>> DETECTING_ANGER_LEVELS... 😡</h1>
+  <button class="btn-pink" style="border-color: var(--neon-red); color: var(--neon-red);" onclick="angry()">> CONFIRM_ANGER <</button>
+  <button onclick="love()">> OVERRIDE_WITH_BROMANCE ❤️ <</button>
+</div>
+
+<!-- PAGE 5: FINAL PROTOCOL -->
+<div class="page" id="page5">
+  <h1 id="finalText"></h1>
+</div>
+
+<script>
+const music = document.getElementById("music");
+
+function nextPage(p) {
+  document.querySelectorAll('.page').forEach(pg => pg.classList.remove('active'));
+  setTimeout(() => {
+    document.getElementById('page' + p).classList.add('active');
+  }, 100);
+}
+
+function initializeSystem() {
+  music.volume = 0.8; 
+  music.play().catch(e => console.log("Audio play blocked.", e));
+  
+  nextPage(1);
+  setTimeout(typeWriter, 500);
+}
+
+// Added <br> for logical line breaks on mobile screens
+const text = "USER: ADITYA...\nERROR 404: BIRTHDAY_DATE_NOT_FOUND...\nSYSTEM REBOOTING...\nBUT U R IMPORTANT ❤️";
+let i = 0;
+function typeWriter() {
+  if (i < text.length) {
+    if(text.charAt(i) === '\n') {
+      document.getElementById("typing").innerHTML += "<br>";
+    } else {
+      document.getElementById("typing").innerHTML += text.charAt(i);
+    }
+    i++;
+    let typingSpeed = Math.random() * (90 - 30) + 30; 
+    setTimeout(typeWriter, typingSpeed);
+  } else {
+    document.getElementById("btnContinue").style.display = "inline-block";
+  }
+}
+
+function startParty() {
+  nextPage(3);
+
+  var duration = 3 * 1000;
+  var end = Date.now() + duration;
+
+  (function frame() {
+    confetti({
+      particleCount: 6,
+      angle: 60,
+      spread: 60,
+      origin: { x: 0 },
+      colors: ['#00f3ff', '#ff00ff', '#ffffff'] // Sci-Fi + Birthday colors
+    });
+    confetti({
+      particleCount: 6,
+      angle: 120,
+      spread: 60,
+      origin: { x: 1 },
+      colors: ['#00f3ff', '#ff00ff', '#ffffff']
+    });
+
+    if (Date.now() < end) {
+      requestAnimationFrame(frame);
+    }
+  }());
+}
+
+function angry() {
+  nextPage(5);
+  document.getElementById("finalText").innerHTML =
+    "> SYSTEM_WARNING: GUSSA REH LE 😭 <br><br> > PROTOCOL_UPDATED: TREAT PAKKI MERI TARAF SE 🍕🔥";
+}
+
+function love() {
+  nextPage(5);
+  document.getElementById("finalText").innerHTML =
+    "> EMOTION_ACCEPTED: TU BHAI HAI ❤️ <br><br> > LATE SAHI, PAR DIL SE WISH KIYA 🎂";
+}
+</script>
+
+</body>
+</html>
